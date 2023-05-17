@@ -1,9 +1,9 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+  // Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "SItemChest.h"
 
-void ASItemChest::Interact_Implementation(APawn* Instigator)
+void ASItemChest::Interact_Implementation(APawn* InstigatorPawn)
 {
 	LidMesh->SetRelativeRotation(FRotator(TargetPitch, 0, 0));
 }

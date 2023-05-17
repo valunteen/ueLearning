@@ -9,11 +9,15 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class USInteractionComponent;
+class UAnimMontag;
 
 UCLASS()
 class UELEARNING_API ASCharacter : public ACharacter
 {
 	GENERATED_BODY()
+
+	
 
 public:
 	// Sets default values for this character's properties
@@ -29,6 +33,12 @@ protected:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AActor> ProjectileClass;
 
+	UPROPERTY(VisibleAnywhere)
+	USInteractionComponent* InteractComp;
+
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* AttackAnim;
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -36,6 +46,10 @@ protected:
 	void MoveRight(float Value);
 
 	void PrimaryAttack();
+	void PrimaryInteract();
+
+	FTimerHandle TimerHandle_PrimaryAttack;
+	void PrimaryAttack_TimeElapsed();
 
 public:	
 	// Called every frame
