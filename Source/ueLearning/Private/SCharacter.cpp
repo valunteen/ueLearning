@@ -81,6 +81,8 @@ void ASCharacter::PrimaryAttack_TimeElapsed()
 {
 	if (ensureAlways(ProjectileClass))
 	{
+		
+
 		FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
 
 		FTransform SpawnTM = FTransform(GetControlRotation(), HandLocation);
