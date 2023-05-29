@@ -5,6 +5,7 @@
 #include "PhysicsEngine/RadialForceComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/CollisionProfile.h"
+#include <Runtime/Engine/Public/DrawDebugHelpers.h>
 
 // Sets default values
 ASExplosiveBarrel::ASExplosiveBarrel()
@@ -33,6 +34,7 @@ void ASExplosiveBarrel::BeginPlay()
 	UE_LOG(LogTemp, Log, TEXT("(UE_LOG-logTemp)    Hello world!"));
 }
 
+//run between constructor & begin play
 void ASExplosiveBarrel::PostInitializeComponents()
 {
 	// Don't forget to call parent function
