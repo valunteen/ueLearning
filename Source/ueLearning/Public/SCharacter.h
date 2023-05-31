@@ -11,25 +11,26 @@ class USpringArmComponent;
 class UCameraComponent;
 class USInteractionComponent;
 class UAnimMontag;
+class UUserWidget;
 
 UCLASS()
 class UELEARNING_API ASCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
-	
-
 public:
 	// Sets default values for this character's properties
 	ASCharacter();
 
 protected:
+	//基础组件
 	UPROPERTY(VisibleAnywhere)
 	USpringArmComponent* SpringArmComp;
 
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* CameraComp;
 
+	//攻击互动类组件
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AActor> ProjectileClass;
 
@@ -39,17 +40,33 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
 
+	//UI组件
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CrossHairAsset")
+	TSubclassOf<class UUserWidget> CrossHairAsset;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CrossHairAsset")
+	UUserWidget* CrossHair;
+
 	// Called when the game starts or when spawned
+	APlayerController* PC1;
 	virtual void BeginPlay() override;
 
+	//custom Function::move
 	void MoveForward(float Value);
 	void MoveRight(float Value);
 
-	void PrimaryAttack();
+	//custom Function::Interact
 	void PrimaryInteract();
 
+	//custom Function::Attack
 	FTimerHandle TimerHandle_PrimaryAttack;
+	void PrimaryAttack();
 	void PrimaryAttack_TimeElapsed();
+
+	//custom Function::aim
+	void AimToTarget(FVector& HitLocation);
+	bool GetSightRaylocation(FVector& OutHitLocation);
+	bool GetLookVectorHitLocation(FVector LookLocation, FVector& OutHitLocation);
 
 public:	
 	// Called every frame

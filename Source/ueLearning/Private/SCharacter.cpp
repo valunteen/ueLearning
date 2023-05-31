@@ -8,6 +8,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Blueprint/UserWidget.h"
 
+
 // Sets default values
 ASCharacter::ASCharacter()
 {
@@ -35,6 +36,15 @@ ASCharacter::ASCharacter()
 void ASCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	PC1 = GetWorld()->GetFirstPlayerController();
+	if (CrossHairAsset)
+	{
+		CrossHair = CreateWidget<UUserWidget>(PC1, CrossHairAsset);
+	}
+
+	CrossHair->AddToViewport();
+	CrossHair->SetVisibility(ESlateVisibility::Visible);
 }
 
 void ASCharacter::MoveForward(float Value)
@@ -81,7 +91,9 @@ void ASCharacter::PrimaryAttack_TimeElapsed()
 {
 	if (ensureAlways(ProjectileClass))
 	{
-		
+		//aim
+		FVector HitLocation;
+		AimToTarget(HitLocation);
 
 		FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
 
@@ -93,6 +105,28 @@ void ASCharacter::PrimaryAttack_TimeElapsed()
 
 		GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnTM, SpawnParams);
 	}
+}
+
+void ASCharacter::AimToTarget(FVector& HitLocation)
+{
+	if (GetSightRaylocation(HitLocation))
+	{
+		//TODO::set character world rotation;
+	}
+}
+
+bool ASCharacter::GetSightRaylocation(FVector& OutHitLocation)
+{
+	int32 ViewportSizeX, ViewportSizeY;
+	PC1->GetViewportSize(ViewportSizeX, ViewportSizeY);
+	FVector2D ScreenLocation = FVector(ViewportSizeX * )
+
+	return false;
+}
+
+bool ASCharacter::GetLookVectorHitLocation(FVector LookLocation, FVector& OutHitLocation)
+{
+	return false;
 }
 
 // Called every frame
