@@ -64,9 +64,6 @@ protected:
 	void PrimaryAttack_TimeElapsed();
 
 	//custom Function::aim
-	void AimToTarget(FVector& HitLocation);
-	bool GetSightRaylocation(FVector& OutHitLocation);
-	bool GetLookVectorHitLocation(FVector LookLocation, FVector& OutHitLocation);
 
 public:	
 	// Called every frame

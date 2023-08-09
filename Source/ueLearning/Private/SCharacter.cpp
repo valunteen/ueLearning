@@ -93,7 +93,6 @@ void ASCharacter::PrimaryAttack_TimeElapsed()
 	{
 		//aim
 		FVector HitLocation;
-		AimToTarget(HitLocation);
 
 		FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
 
@@ -107,27 +106,6 @@ void ASCharacter::PrimaryAttack_TimeElapsed()
 	}
 }
 
-void ASCharacter::AimToTarget(FVector& HitLocation)
-{
-	if (GetSightRaylocation(HitLocation))
-	{
-		//TODO::set character world rotation;
-	}
-}
-
-bool ASCharacter::GetSightRaylocation(FVector& OutHitLocation)
-{
-	int32 ViewportSizeX, ViewportSizeY;
-	PC1->GetViewportSize(ViewportSizeX, ViewportSizeY);
-	FVector2D ScreenLocation = FVector(ViewportSizeX * )
-
-	return false;
-}
-
-bool ASCharacter::GetLookVectorHitLocation(FVector LookLocation, FVector& OutHitLocation)
-{
-	return false;
-}
 
 // Called every frame
 void ASCharacter::Tick(float DeltaTime)
