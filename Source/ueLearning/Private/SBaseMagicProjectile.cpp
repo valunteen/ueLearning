@@ -10,7 +10,7 @@
 ASBaseMagicProjectile::ASBaseMagicProjectile()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	/*PrimaryActorTick.bCanEverTick = true;
 
 	SphereComp = CreateDefaultSubobject<USphereComponent>("SphereComp");
 	SphereComp->SetCollisionProfileName("Projectile");
@@ -22,7 +22,7 @@ ASBaseMagicProjectile::ASBaseMagicProjectile()
 	MovementComp = CreateDefaultSubobject<UProjectileMovementComponent>("MovementComp");
 	MovementComp->InitialSpeed = 1000.0f;
 	MovementComp->bRotationFollowsVelocity = true;
-	MovementComp->bInitialVelocityInLocalSpace = true;
+	MovementComp->bInitialVelocityInLocalSpace = true;*/
 }
 
 // Called when the game starts or when spawned

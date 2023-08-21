@@ -32,7 +32,11 @@ protected:
 
 	//攻击互动类组件
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<AActor> ProjectileClass;
+	TSubclassOf<AActor> BaseProjectileClass;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AActor> DashProjectileClass;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AActor> BlackHoleProjectileClass;
 
 	UPROPERTY(VisibleAnywhere)
 	USInteractionComponent* InteractComp;
@@ -62,6 +66,12 @@ protected:
 	FTimerHandle TimerHandle_PrimaryAttack;
 	void PrimaryAttack();
 	void PrimaryAttack_TimeElapsed();
+	void DashAttack();
+	void DashAttack_TimeElapsed();
+	void BlackHoleAttack();
+	void BlackHoleAttack_TimeElapsed();
+
+	void SpawnProjectile(TSubclassOf<AActor> ClassToSpawn);
 
 	//custom Function::aim
 
